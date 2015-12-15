@@ -35,7 +35,7 @@
     /* if user chooses a product, retrieve category data and display product category(s) */
     if($_POST['product_id']) {
 
-	/* Traverse that Hierarchical table to get colors assigned to each product (if exists) */
+	/* Traverse that Hierarchical table to get the product's hierarchy of categories */
     $rows = $db -> select("select t.cat_id, t.cat_name, @pv := t.cat_parent_id cat_parent_id\n"
 	    . "from (select * from test_categories order by cat_id desc) t\n"
 	    . "join (select @pv := $maker[cat_id]) tmp\n"
