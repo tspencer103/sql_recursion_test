@@ -1,0 +1,15 @@
+.form-group { 
+    width: 250px; 
+}
+select {
+    height: 30px; 
+}
+button {
+    height: 30px; 
+}
+select:required:invalid {
+    display: hide;
+}
+#selBG {
+    background-color: lightblue;
+}
