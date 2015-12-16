@@ -42,20 +42,20 @@
 	    . "WHERE t.cat_id = @pv\n"
 	    . "");
         
-        $maker = displayCategoryTrail($rows, $maker);
+    $maker = displayCategoryTrail($rows, $maker);
+    
+	echo "<br /><br/>" . PHP_EOL; 
+
+    /* retrieve product's options (if they exist) and display them in a selector. Otherwise do nothing. */
+    $rows = $db -> select("SELECT test_products.product_id, test_products.product_name, test_options.option_name\n"
+        . "FROM test_products\n"
+        . " INNER JOIN test_assign_option_product\n"
+        . " ON test_products.product_id=test_assign_option_product.product_id\n"
+        . " INNER JOIN test_options\n"
+        . " ON test_assign_option_product.option_id = test_options.option_id\n");
         
-    	echo "<br /><br/>" . PHP_EOL; 
 
-        /* retrieve product's options (if they exist) and display them in a selector. Otherwise do nothing. */
-        $rows = $db -> select("SELECT test_products.product_id, test_products.product_name, test_options.option_name\n"
-            . "FROM test_products\n"
-            . " INNER JOIN test_assign_option_product\n"
-            . " ON test_products.product_id=test_assign_option_product.product_id\n"
-            . " INNER JOIN test_options\n"
-            . " ON test_assign_option_product.option_id = test_options.option_id\n");
-            
-
-       displayOptionsSelector($rows,$maker);
+   displayOptionsSelector($rows,$maker);
     
    }
 
