@@ -36,10 +36,10 @@
     if($_POST['product_id']) {
 
 	/* Traverse that Hierarchical table to get the product's hierarchy of categories */
-    $rows = $db -> select("select t.cat_id, t.cat_name, @pv := t.cat_parent_id cat_parent_id\n"
-	    . "from (select * from test_categories order by cat_id desc) t\n"
-	    . "join (select @pv := $maker[cat_id]) tmp\n"
-	    . "where t.cat_id = @pv\n"
+    $rows = $db -> select("SELECT t.cat_id, t.cat_name, @pv := t.cat_parent_id cat_parent_id\n"
+	    . "from (SELECT * FROM test_categories ORDER BY cat_id desc) t\n"
+	    . "join (SELECT @pv := $maker[cat_id]) tmp\n"
+	    . "WHERE t.cat_id = @pv\n"
 	    . "");
         
         $maker = displayCategoryTrail($rows, $maker);
